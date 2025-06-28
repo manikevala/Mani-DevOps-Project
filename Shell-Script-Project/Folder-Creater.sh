@@ -13,74 +13,80 @@ echo"...Welcome to for loop condition..."
 echo""
 
 while true; do
-	echo""
 	echo "Do you want to execute File Creater or Command Runner "
+	echo ""
+	echo "Main Manu"
+	echo ""
 	echo "1) File Creater"
 	echo "2) Command Runner"
-	echo "3) Exit"
-	
-	read -p "Enter your choice" CHOICE
+	echo "3) Delete File"
+	echo "4) Exit"
+	echo ""
+	read -p "Enter your choice: " CHOICE
 
 	case $CHOICE in
 		1) 
-			File_Creater
+			echo "You choose File Creater"
+			echo ""
+			read -p "Enter File Name: " File_Name
+			touch "$File_Name"
+			echo ""
+			echo "'$File_Name' file is created..!"
 			;;
+
 		2)
-			Command_Runner
+			echo "You choose Command Runner"
+
+			while true; do
+				echo ""
+				echo "choose a command to run"
+				echo "1) Show desk usage"
+				echo "2) Show memory usage"
+				echo "3) Show current user"
+				echo "4) Exit"
+				
+				read -p "Enter your choice: " CHOICE2
+
+			case $CHOICE2 in
+				1)
+					df -h
+					;;
+				2)
+					free -h
+					;;
+				3) 
+					who
+					;;
+				4)
+					echo "Exesting...Bye!"
+					break
+					;;
+				*) 
+					echo "Invaild Choice"
+					;;
+
+				esac
+			done
 			;;
 		3)
-			echo "Existing..!"
+			echo "You choose Delete file"
+			echo""
+			echo "list of files"
+			echo ""
+			ls 
+			echo ""
+			read -p "Enter the File Name: " DELETE_FILE
+			rm "$DELETE_FILE"
+			echo "$DELETE_FILE is deleted..!"
+			;;
+
+		4)
+			echo "Exiting...Bye"
 			break
 			;;
-		*) 
+
+		*)
 			echo "Invalid Choice"
+			;;
 	esac
-
-	done
-
-
-if [ "$CHOICE" == File_Creater ]; then
-	echo "You choosed File Creater"
-	echo ""
-	echo "Enter File Name" 
-	read "FILE_NAME"
-	touch "$FILE_NAME"
-	echo "$FILE_NAME file is created!"
-
-else [ "$CHOICE" == Command_Runner ]; then
-	echo "You choosed Command Runner"
-	
-while true; do
-	echo ""
-	echo "choose a command to run"
-	echo "1) Show desk usage"
-	echo "2) Show memory usage"
-	echo "3) Show current user"
-	echo "4) Exit"
-
-	read -p "Enter you choice [1-4]: " CHOICE_CMD
-	
-	case $CHOICE_CMD in 
-		1) 
-			df -h
-			;;
-		2)
-			free -h
-			;;
-		3)
-			who
-			;;
-		4) 
-			echo "Exiting... Bye!"
-			break
-			;;
-		*) 
-			echo "Invalid choice. Please enter 1-4. "
-			;;
-
-	esac
-
-	done
-
-fi
-
+done
