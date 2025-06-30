@@ -1,0 +1,36 @@
+# This is the yml file to chekc the system info
+# change the hosts name
+
+
+---
+- name: Check system info
+  hosts: [write the name]
+  tasks:
+    - name: Check memory usage
+      command: free -h
+      register: memory_output
+
+    - name: Show memory output
+      debug:
+        var: memory_output.stdout_lines
+
+    - name: Check disk usage
+      command: df -h
+      register: disk_output
+
+    - name: Show disk output
+      debug:
+        var: disk_output.stdout_lines
+
+    - name: Show uptime
+      command: uptime
+      register: uptime_output
+
+    - name: Show uptime output
+      debug:
+        var: uptime_output.stdout_lines
+
+
+
+
+
