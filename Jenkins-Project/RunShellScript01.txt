@@ -1,0 +1,16 @@
+# This is the first Jenkins file
+# Here we will create a Free Style jenkins project
+
+# This is the basic shell command 
+echo "Welcome, this is my first Jenkins job!"
+echo "Today's Date and Time:"
+date
+echo "System Uptime:"
+uptime
+echo "Disk Usage:"
+df -h
+ 
+
+# save the file 
+# Build Now 
+# Console Output form Build stage

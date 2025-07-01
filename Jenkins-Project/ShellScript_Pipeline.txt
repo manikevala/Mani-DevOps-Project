@@ -1,0 +1,32 @@
+# This script is in pipeline to check the disk and date
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Print Welcome') {
+            steps {
+                echo 'Welcome, this is my first Jenkins pipeline!'
+            }
+        }
+
+        stage('Show Date') {
+            steps {
+                sh 'date'
+            }
+        }
+
+        stage('Show Uptime') {
+            steps {
+                sh 'uptime'
+            }
+        }
+
+        stage('Check Disk Usage') {
+            steps {
+                sh 'df -h'
+            }
+        }
+    }
+}
+
